@@ -1,8 +1,10 @@
 package jpabook.jpashop.service;
 
+import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
+import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.exception.NotEnoughStockException;
 import jpabook.jpashop.repository.OrderRepository;
@@ -49,5 +51,31 @@ public class OrderServiceTest {
         assertEquals("주문 수량만큼 재고가 줄어야 한다.",8, item.getStockQuantity());
     }
 
+    @Test(expected = NotEnoughStockException.class)
+    public void 상품주문_재고수량초과() throws Exception {
+        //...
+    }
+
+    @Test
+    public void 주문취소() {
+        //...
+    }
+
+    private Member createMember() {
+        Member member = new Member();
+        member.setName("member1");
+        member.setAddress(new Address("서울", "히히", "111-111"));
+        em.persist(member);
+        return member;
+    }
+
+    private Book createBook(String name, int price, int stockQuantity) {
+        Book book = new Book();
+        book.setName(name);
+        book.setStockQuantity(stockQuantity);
+        book.setPrice(price);
+        em.persist(book);
+        return book;
+    }
 
 }
