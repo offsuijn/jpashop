@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <form th:object="${form}" method="post">
+        <!-- id -->
+        <input type="hidden" th:field="*{id}" />
+        <div class="form-group">
+            <label th:for="name">   </label>
+            <input type="text" th:field="*{name}" class="form-control"
+                   placeholder="이 을  력하세 " />
+        </div>
+        <div class="form-group">
+            <label th:for="price">  </label>
+            <input type="number" th:field="*{price}" class="form-control"
+                   placeholder="  을  력하세 " />
+        </div>
+        <div class="form-group">
+            <label th:for="stockQuantity">  </label>
+            <input type="number" th:field="*{stockQuantity}" class="formcontrol"
+                   placeholder="  을  력하세 " />
+        </div>
+        <div class="form-group">
+            <label th:for="author">  </label>
+            <input type="text" th:field="*{author}" class="form-control"
+                   placeholder="  를  력하세 " />
+        </div>
+        <div class="form-group">
+            <label th:for="isbn">ISBN</label>
+            <input type="text" th:field="*{isbn}" class="form-control"
+                   placeholder="ISBN을  력하세 " />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>
